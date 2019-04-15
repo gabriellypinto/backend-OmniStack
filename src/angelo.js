@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors);
+app.use(cors());
 
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
@@ -17,7 +17,7 @@ io.on("connection", socket => {
 });
 
 mongoose.connect(
-  "mongodb+srv://gabrielly:gabrielly@cluster0-kg5fu.mongodb.net/test?retryWrites=true",
+  "mongodb+srv://omnistack:omnistack@cluster0-m9d9y.mongodb.net/omnistack?retryWrites=true",
   {
     useNewUrlParser: true
   }
@@ -25,6 +25,7 @@ mongoose.connect(
 
 app.use((req, res, next) => {
   req.io = io;
+
   return next();
 });
 
@@ -34,4 +35,4 @@ app.use("/files", express.static(path.resolve(__dirname, "..", "tmp")));
 
 app.use(require("./routes"));
 
-app.listen(process.env.PORT || 3333);
+server.listen(process.env.PORT || 3333);
