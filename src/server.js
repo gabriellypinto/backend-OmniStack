@@ -17,7 +17,7 @@ io.on("connection", socket => {
 });
 
 mongoose.connect(
-  "mongodb+srv://gabrielly:gabrielly@cluster0-kg5fu.mongodb.net/test?retryWrites=true",
+  "mongodb+srv://gabrielly:gabrielly@cluster0-kg5fu.mongodb.net/gabrielly?retryWrites=true",
   {
     useNewUrlParser: true
   }
